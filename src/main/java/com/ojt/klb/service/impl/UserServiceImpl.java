@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
 
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
@@ -41,7 +40,9 @@ public class UserServiceImpl implements UserService {
 
     private static final String TOPIC = "customer-topic";
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, AccountRepository accountRepository, GenerateUniqueNumber generateUniqueAccountNumber, KafkaTemplate<String, CustomerDto> kafkaTemplate) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder,
+            AccountRepository accountRepository, GenerateUniqueNumber generateUniqueAccountNumber,
+            KafkaTemplate<String, CustomerDto> kafkaTemplate) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.accountRepository = accountRepository;
@@ -59,6 +60,7 @@ public class UserServiceImpl implements UserService {
             if (passwordEncoder.matches(password, user.getPassword())) {
                 logger.info("Login successful for username: {} ", username);
                 LoginDto loginDto = new LoginDto();
+                loginDto.setUsername(String.valueOf(user.getUsername()));
                 loginDto.setRole(String.valueOf(user.getRole()));
                 return Optional.of(loginDto);
             } else {
@@ -70,7 +72,6 @@ public class UserServiceImpl implements UserService {
 
         return Optional.empty();
     }
-
 
     @Override
     @Transactional(rollbackFor = Exception.class)

@@ -39,8 +39,8 @@ public class CardRegistrationRequest {
         rejected
     }
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "request_date", nullable = false)
+    // @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "request_date", nullable = true)
     private Timestamp requestDate;
 
     @Column(name = "review_date")

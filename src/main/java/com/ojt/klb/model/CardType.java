@@ -31,12 +31,12 @@ public class CardType {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
-    @Column(name = "created_at", nullable = false)
-    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "created_at", nullable = true)
+    // @ColumnDefault("CURRENT_TIMESTAMP")
     private Timestamp createdAt;
 
-    @Column(name = "updated_at", nullable = false)
-    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "updated_at", nullable = true)
+    // @ColumnDefault("CURRENT_TIMESTAMP")
     @org.hibernate.annotations.UpdateTimestamp
     private Timestamp updatedAt;
 }

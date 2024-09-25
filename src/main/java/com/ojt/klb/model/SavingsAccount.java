@@ -36,12 +36,12 @@ public class SavingsAccount {
     @Column(name = "status", nullable = false)
     private Status status = Status.active;
 
-    @Column(name = "created_at", nullable = false)
-    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "created_at", nullable = true)
+    // @ColumnDefault("CURRENT_TIMESTAMP")
     private Timestamp createdAt;
 
-    @Column(name = "updated_at", nullable = false)
-    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "updated_at", nullable = true)
+    // @ColumnDefault("CURRENT_TIMESTAMP")
     @org.hibernate.annotations.UpdateTimestamp
     private Timestamp updatedAt;
 

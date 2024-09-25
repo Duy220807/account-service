@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/cards")
+@RequestMapping("/api/v1/cards")
 public class CardController {
 
     private static final Logger logger = LoggerFactory.getLogger(CardController.class);
@@ -30,8 +30,7 @@ public class CardController {
                     HttpStatus.OK.value(),
                     "Register Napas card successfully",
                     true,
-                    null
-            );
+                    null);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             logger.error("Error creating card Napas for accountId: {}", accountId, e);
@@ -40,8 +39,7 @@ public class CardController {
                     HttpStatus.INTERNAL_SERVER_ERROR.value(),
                     "Error creating Napas card. Try again later!",
                     false,
-                    null
-            );
+                    null);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
